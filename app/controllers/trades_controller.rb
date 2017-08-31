@@ -6,4 +6,7 @@ class TradesController < ApplicationController
 		@user = current_user.email
 	end
 
+	def new
+	end
+
 end
