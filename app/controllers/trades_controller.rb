@@ -7,6 +7,7 @@ class TradesController < ApplicationController
 	end
 
 	def new
+		@hello = 'whatever'
 	end
 
 end
