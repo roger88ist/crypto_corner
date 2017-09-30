@@ -11,7 +11,14 @@ class TradesController < ApplicationController
 	end
 
 	def create
+		Trade.create(trade_params)
 
+		redirect_to trades_path
 	end
 
+	private
+
+	def trade_params
+		params.require(:trade).permit(:symbol, :total_coins, :dollars)
+	end
 end
