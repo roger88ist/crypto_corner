@@ -1,6 +1,6 @@
 <h1>This is where the Transaction history goes</h1>
 
-<%= link_to('+', transactions_new_path, data: { toggle: 'modal', target: '#add_transaction_modal'}, class: ["btn", "btn-primary", "btn-lg"], remote: true) %>
+<%= link_to('+', new_trade_path, data: { toggle: 'modal', target: '#add_transaction_modal'}, class: ["btn", "btn-primary", "btn-lg"], remote: true) %>
 
 <!-- Modal -->
 <div class="modal fade" id="add_transaction_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -8,10 +8,10 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        <h4 class="modal-title" id="myModalLabel">New Purchase</h4>
       </div>
       <div class="modal-body">
-        <p id="here"></p>
+        <div id="form"></div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

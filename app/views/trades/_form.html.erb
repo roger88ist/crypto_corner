@@ -1,0 +1,17 @@
+<%= form_for(@trade) do |f| %>
+	<div id='symbol_trade'>
+		<%= f.text_field :symbol, placeholder: 'Symbol' %>
+	</div>
+	</br>
+	<div id='total_coins_trade'>
+		<%= f.text_field :total_coins, placeholder: 'Total Coins' %>
+	</div>
+	</br>
+	<div id='dollars_trade'>
+		<%= f.text_field :dollars, placeholder: 'Dollars Spent' %>
+	</div>
+	</br>
+	<div>
+		<%= f.submit 'Add' %>
+	</div>
+<% end %>

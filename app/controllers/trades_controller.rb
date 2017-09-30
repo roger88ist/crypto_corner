@@ -7,7 +7,11 @@ class TradesController < ApplicationController
 	end
 
 	def new
-		@hello = 'whatever'
+		@trade = Trade.new
+	end
+
+	def create
+
 	end
 
 end

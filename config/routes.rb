@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   root 'home#index'
 
   get '/transactions', to: 'trades#index'
-  get '/transactions/new', to: 'trades#new'
+
+  resources :trades
 end
