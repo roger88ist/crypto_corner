@@ -1,15 +1,20 @@
-<h1>This is where the Transaction history goes</h1>
+<h1>Transaction History</h1>
 
-<table id="trades-history">
-	<tr>
-		<th>Coin</th>
-		<th>Amount</th>
-		<th>Price</th>
-	</tr>
+<table class="table">
+	<thead class="thead-inverse">
+		<tr>
+			<th>Coins</th>
+			<th>Amount</th>
+			<th>Price</th>
+		</tr>
+	</thead>
 
-	<% @trades.each do |trade| %>
-		<%= render partial: 'trade', locals: {trade: trade} %>
-	<% end %>
+	<tbody>
+		<% @trades.each do |trade| %>
+			<%= render partial: 'trade', locals: {trade: trade} %>
+		<% end %>
+	</tbody>
+	
 </table>
 
 <%= link_to('+', new_trade_path, data: { toggle: 'modal', target: '#add_transaction_modal'}, class: ["btn", "btn-primary", "btn-lg"], remote: true) %>
@@ -26,8 +31,6 @@
         <div id="form"></div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
