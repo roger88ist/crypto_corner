@@ -1,5 +1,17 @@
 <h1>This is where the Transaction history goes</h1>
 
+<table id="trades-history">
+	<tr>
+		<th>Coin</th>
+		<th>Amount</th>
+		<th>Price</th>
+	</tr>
+
+	<% @trades.each do |trade| %>
+		<%= render partial: 'trade', locals: {trade: trade} %>
+	<% end %>
+</table>
+
 <%= link_to('+', new_trade_path, data: { toggle: 'modal', target: '#add_transaction_modal'}, class: ["btn", "btn-primary", "btn-lg"], remote: true) %>
 
 <!-- Modal -->

@@ -4,6 +4,7 @@ class TradesController < ApplicationController
 
 	def index
 		@user = current_user.email
+		@trades = Trade.all
 	end
 
 	def new
