@@ -1,23 +1,25 @@
 <h1>Transaction History</h1>
 
-<table class="table">
-	<thead class="thead-inverse">
-		<tr>
-			<th>Coins</th>
-			<th>Amount</th>
-			<th>Price</th>
-		</tr>
-	</thead>
+<div class="card w-75">
+	<table class="table">
+		<thead class="thead-inverse">
+			<tr>
+				<th>Coins</th>
+				<th>Amount</th>
+				<th>Price</th>
+			</tr>
+		</thead>
 
-	<tbody>
-		<% @trades.each do |trade| %>
-			<%= render partial: 'trade', locals: {trade: trade} %>
-		<% end %>
-	</tbody>
-	
-</table>
+		<tbody>
+			<% @trades.each do |trade| %>
+				<%= render partial: 'trade', locals: {trade: trade} %>
+			<% end %>
+		</tbody>
+		
+	</table>
+</div>
 
-<%= link_to('+', new_trade_path, data: { toggle: 'modal', target: '#add_transaction_modal'}, class: ["btn", "btn-primary", "btn-lg"], remote: true) %>
+<%= link_to('+', new_trade_path, data: { toggle: 'modal', target: '#add_transaction_modal'}, class: ["btn", "btn-dark"], remote: true) %>
 
 <!-- Modal -->
 <div class="modal fade" id="add_transaction_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

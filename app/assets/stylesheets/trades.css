@@ -12,3 +12,9 @@
 #trades-history {
 	margin-left: 10%;
 }
+
+.btn-dark {
+	color: white;
+	background-color: #292b2c;
+  border-color: #292b2c;
+}
