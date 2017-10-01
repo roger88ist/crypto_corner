@@ -1,5 +1,5 @@
 <tr>
-	<td><%= trade.symbol %></td>
-	<td><%= trade.total_coins %></td>
-	<td><%= trade.price %></td>
+	<td><%= trade.symbol.upcase %></td>
+	<td><%= trade.total_coins.round(2) %></td>
+	<td><%= trade.price.round(2) %></td>
 </tr>

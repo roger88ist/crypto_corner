@@ -19,6 +19,6 @@ class TradesController < ApplicationController
 	private
 
 	def trade_params
-		params.require(:trade).permit(:symbol, :total_coins, :dollars)
+		params.require(:trade).permit(:symbol, :total_coins, :dollars, :date)
 	end
 end

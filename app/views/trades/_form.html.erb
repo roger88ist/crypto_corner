@@ -11,6 +11,10 @@
 		<%= f.text_field :dollars, placeholder: 'Dollars Spent' %>
 	</div>
 	</br>
+	<div id="date_trade">
+		<%= f.date_field(:date, placeholder: 'Date of Purchase') %>
+	</div>
+	</br>
 	<div>
 		<%= f.submit 'Add', class: ['btn', 'btn-primary'] %>
 	</div>
