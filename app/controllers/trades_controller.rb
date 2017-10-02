@@ -3,7 +3,7 @@ class TradesController < ApplicationController
 	before_action :authenticate_user!
 
 	def index
-		@trades = Trade.all
+		@trades = Trade.for_trades_index(current_user)
 	end
 
 	def new
