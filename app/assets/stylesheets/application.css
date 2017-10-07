@@ -18,3 +18,13 @@
 a {
 	text-decoration: none;
 }
+
+.centered {
+	text-align: center;
+	margin: auto;
+}
+
+#sign-in-card {
+	margin-top: 150px;
+	background-color: snow;
+}
