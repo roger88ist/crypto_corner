@@ -1,0 +1,8 @@
+#portfolio-details th {
+	vertical-align: middle;
+}
+
+#portfolio-details th p {
+	width: 50%;
+	text-align: center;
+}
