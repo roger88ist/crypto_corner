@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171001211542) do
+ActiveRecord::Schema.define(version: 20171022031209) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20171001211542) do
     t.float    "total_coins"
     t.float    "dollars"
     t.float    "price"
-    t.string   "type"
+    t.string   "trade_type"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.date     "date"
