@@ -11,7 +11,7 @@ class TradesController < ApplicationController
 	end
 
 	def create
-		TradeService.create_trade(trade_params, current_user)
+		TradeService.create_buy_trade(trade_params, current_user)
 
 		redirect_to trades_path
 	end
