@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :trades, dependent: :destroy
+
+  serialize :coins, Hash
 end
