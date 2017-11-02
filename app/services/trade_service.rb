@@ -6,4 +6,8 @@ class TradeService
 		attributes[:trade_type] = 'buy'
 		Trade.create(attributes)
 	end
+
+	def self.total_user_investment(user)
+		Trade.by_user(user).pluck(:dollars).inject(&:+)
+	end
 end

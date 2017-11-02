@@ -8,8 +8,4 @@ class Trade < ApplicationRecord
   	by_user(current_user).order_by_date
   end
 
-  def self.total_user_investment(current_user)
-  	by_user(current_user).pluck(:dollars).inject(&:+)
-  end
-
 end
