@@ -4,7 +4,7 @@ RSpec.describe User, type: :model do
 
   describe '#coins' do
   	it 'is data type Hash' do
-      user = User.new
+      user = create(:user)
 
       expect(user.coins).to be_a Hash
     end
