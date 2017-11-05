@@ -8,5 +8,4 @@ class User < ApplicationRecord
 
   serialize :coins, Hash
 
-  COIN_ATTRIBUTES = { amount: 0, dollars_spent: 0 }
 end
