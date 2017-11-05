@@ -13,4 +13,14 @@ RSpec.describe TradeService do
     end
   end
 
+  describe '.update_user_coins' do
+    it 'updates user#coins correctly' do
+      purchase_attrs = attributes_for(:trade, :buy)
+      user = create(:user)
+      TradeService.send(:update_user_coins, purchase_attrs, user)
+
+      expect(User.first.coins).to eq({btc: {amount: 10, dollars_spent: 100}})
+    end
+  end
+
 end
