@@ -24,6 +24,23 @@ RSpec.describe TradeService do
     end
   end
 
+  describe '.refresh_all_users_coins' do 
+    it 'updates each users #coins attribute according to their associated trades' do
+      user = create(:user)
+      2.times { create(:trade, user_id: user.id) }
+      create(:trade, symbol: 'ltc', user_id: user.id)
+
+      TradeService.refresh_all_users_coins
+
+      result = {
+        btc: {amount: 20, dollars_spent:200 }, 
+        ltc: {amount: 10, dollars_spent:100 }, 
+      }
+
+      expect(User.first.coins).to eq(result )
+    end
+  end
+
   describe '.update_user_coins' do
     it 'updates user#coins correctly' do
       user = create(:user)

@@ -13,6 +13,12 @@ class TradeService
     Trade.by_user(user).pluck(:dollars).inject(&:+)
   end
 
+  def self.refresh_all_users_coins
+    User.all.each do |user|
+      user.update_coins_based_on_trades
+    end
+  end
+
   private
 
   def self.update_user_coins(attributes, user)
