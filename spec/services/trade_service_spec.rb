@@ -30,7 +30,11 @@ RSpec.describe TradeService do
       purchase_attrs = attributes_for(:trade, :buy)
       TradeService.send(:update_user_coins, purchase_attrs, user)
 
-      expect(User.first.coins).to eq({btc: {amount: 10, dollars_spent: 100}})
+      hash = {
+        btc: {amount: 10, dollars_spent: 100}
+      }
+
+      expect(User.first.coins).to eq(hash)
     end
   end
 
