@@ -23,7 +23,7 @@ RSpec.describe User, type: :model do
         ltc: {amount: 10, dollars_spent:100 }, 
       }
 
-      expect(user.coins).to eq(result )
+      expect(User.first.coins).to eq(result)
     end
   end
 end

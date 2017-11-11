@@ -10,15 +10,17 @@ class User < ApplicationRecord
 
   def update_coins_based_on_trades
 
-    trades.each do |trade|
+    self.coins = {}
+
+    self.trades.each do |trade|
       ticker = trade.symbol.to_sym
-      if coins[ticker].nil?
-        coins[ticker] = TradeService.coin_hash
+      if self.coins[ticker].nil?
+        self.coins[ticker] = TradeService.coin_hash
       end
-      coins[ticker][:amount] += trade.total_coins
-      coins[ticker][:dollars_spent] += trade.dollars
+      self.coins[ticker][:amount] += trade.total_coins
+      self.coins[ticker][:dollars_spent] += trade.dollars
     end
-    
+
     self.save
   end
 
