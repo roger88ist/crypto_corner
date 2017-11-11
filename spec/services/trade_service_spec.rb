@@ -17,6 +17,7 @@ RSpec.describe TradeService do
     it 'returns the sum of all initial investments' do
       user = create(:user)
       2.times { create(:trade, :buy, user_id: user.id)}
+      user.update_coins_based_on_trades
 
       result = TradeService.total_user_investment(user)
 

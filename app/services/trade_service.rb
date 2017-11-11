@@ -10,7 +10,7 @@ class TradeService
   end
 
   def self.total_user_investment(user)
-    Trade.by_user(user).pluck(:dollars).inject(&:+)
+    user.coins.values.map { |info| info[:dollars_spent] }.inject(&:+)
   end
 
   def self.refresh_all_users_coins
