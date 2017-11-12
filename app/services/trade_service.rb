@@ -25,11 +25,15 @@ class TradeService
     symbol = attributes[:symbol].to_sym
     dollars = attributes[:dollars].to_f
     total_coins = attributes[:total_coins].to_f
-    if user.coins[symbol].nil?
-      user.coins[symbol] = coin_hash
-    end
-    user.coins[symbol][:amount] += total_coins
-    user.coins[symbol][:dollars_spent] += dollars
+    if attributes[:trade_type] == 'sell'
+      # logic for selling goes here
+    elsif attributes[:trade_type] == 'buy'
+      if user.coins[symbol].nil?
+        user.coins[symbol] = coin_hash
+      end
+      user.coins[symbol][:amount] += total_coins
+      user.coins[symbol][:dollars_spent] += dollars
+    end 
     user.save
   end
 
