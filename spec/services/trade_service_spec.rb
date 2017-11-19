@@ -15,7 +15,7 @@ RSpec.describe TradeService do
 
   describe ".create_sell_trade" do
     it 'creates a trade with type "sell"' do
-      user = create(:user, coins: {btc: {amount: 100, dollars_spent: 100}})
+      user = create(:user, :with_btc)
       attributes = attributes_for(:trade)
 
       TradeService.create_sell_trade(attributes, user)
@@ -73,7 +73,7 @@ RSpec.describe TradeService do
 
     context 'when selling' do
       it 'updates user#coins correctly by subtracting trade details' do
-        user = create(:user, coins: {btc: {amount: 100, dollars_spent: 100}})
+        user = create(:user, :with_btc)
         
         sell_attrs = {
           user_id: user.id,
