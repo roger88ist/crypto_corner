@@ -24,6 +24,24 @@ RSpec.describe TradeService do
       expect(trade.trade_type).to eq('sell')
       expect(User.first.coins).to eq({btc: {amount: 90.0, dollars_spent: 90.0}})
     end
+
+    context "when selling all of the coins" do
+      it "removes the hash for that coin" do
+        user = create(:user, :with_btc)
+        coin = 'btc'
+        sell_attrs = {
+          symbol: coin,
+          total_coins: 100,
+          dollars: 100
+        }
+
+        TradeService.create_sell_trade(sell_attrs, user)
+
+        coin_hash = User.first.coins[coin.to_sym]
+        expect(coin_hash).to be_nil
+      end
+    end
+
   end
 
   describe '.total_user_investment' do

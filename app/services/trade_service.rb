@@ -40,6 +40,9 @@ class TradeService
       investment_portion_sold = total_coins * price_bought
       user.coins[symbol][:amount] -= total_coins
       user.coins[symbol][:dollars_spent] -= investment_portion_sold
+      if user.coins[symbol][:amount] == 0
+        user.coins[symbol] = nil
+      end
     elsif attributes[:trade_type] == 'buy'
       if user.coins[symbol].nil?
         user.coins[symbol] = coin_hash
