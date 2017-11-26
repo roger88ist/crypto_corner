@@ -14,20 +14,22 @@ RSpec.describe TradeService do
   end
 
   describe ".create_sell_trade" do
-    it 'creates a trade with type "sell"' do
-      user = create(:user, :with_btc)
-      attributes = attributes_for(:trade)
+    let(:user) { create(:user, :with_btc) }
 
-      TradeService.create_sell_trade(attributes, user)
-      trade = Trade.first
-      
-      expect(trade.trade_type).to eq('sell')
-      expect(User.first.coins).to eq({btc: {amount: 90.0, dollars_spent: 90.0}})
+    context "when selling some of the coins" do
+      it 'creates a trade with type "sell"' do
+        attributes = attributes_for(:trade)
+
+        TradeService.create_sell_trade(attributes, user)
+        trade = Trade.first
+        
+        expect(trade.trade_type).to eq('sell')
+        expect(User.first.coins).to eq({btc: {amount: 90.0, dollars_spent: 90.0}})
+      end
     end
 
     context "when selling all of the coins" do
       it "removes the hash for that coin" do
-        user = create(:user, :with_btc)
         coin = 'btc'
         sell_attrs = {
           symbol: coin,
