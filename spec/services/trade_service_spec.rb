@@ -39,8 +39,8 @@ RSpec.describe TradeService do
 
         TradeService.create_sell_trade(sell_attrs, user)
 
-        coin_hash = User.first.coins[coin.to_sym]
-        expect(coin_hash).to be_nil
+        coins = User.first.coins.keys
+        expect(coins).to_not include(coin.to_sym)
       end
     end
 

@@ -41,7 +41,7 @@ class TradeService
       user.coins[symbol][:amount] -= total_coins
       user.coins[symbol][:dollars_spent] -= investment_portion_sold
       if user.coins[symbol][:amount] == 0
-        user.coins[symbol] = nil
+        user.coins.delete(symbol)
       end
     elsif attributes[:trade_type] == 'buy'
       if user.coins[symbol].nil?
