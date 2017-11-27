@@ -7,6 +7,7 @@ class TradesController < ApplicationController
 	end
 
 	def buy
+		@trade = Trade.new
 	end
 
 	def sell

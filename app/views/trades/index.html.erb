@@ -19,7 +19,7 @@
 	</table>
 </div>
 
-<%= link_to('+', new_trade_path, data: { toggle: 'modal', target: '#add_transaction_modal'}, class: ["btn", "btn-dark"], remote: true) %>
+<%= link_to('Buy', trades_buy_path, data: { toggle: 'modal', target: '#add_transaction_modal'}, class: ["btn", "btn-dark"], remote: true) %>
 
 <!-- Modal -->
 <div class="modal fade" id="add_transaction_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
