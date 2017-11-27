@@ -6,6 +6,12 @@ class TradesController < ApplicationController
 		@trades = Trade.for_trades_index(current_user)
 	end
 
+	def buy
+	end
+
+	def sell
+	end
+
 	def new
 		@trade = Trade.new
 	end

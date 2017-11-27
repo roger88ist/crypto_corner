@@ -6,5 +6,7 @@ Rails.application.routes.draw do
 
   get '/transactions', to: 'trades#index'
 
+  get 'trades/buy', to: 'trades#buy'
+  get 'trades/sell', to: 'trades#sell'
   resources :trades
 end
