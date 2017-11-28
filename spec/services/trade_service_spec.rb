@@ -2,6 +2,36 @@ require 'rails_helper'
 
 RSpec.describe TradeService do
 
+  describe '.create_trade' do
+    let(:user) { create(:user) }
+    let(:user_with_btc) { create(:user, :with_btc)}
+    let(:trade_params) { attributes_for(:trade, :buy) }
+
+    context 'when purchasing a new coin' do
+      it 'creates a trade with type "buy"' do
+        TradeService.create_trade(trade_params, user)
+
+        trade = Trade.first
+        coins_hash = { btc: {amount: 10.0, dollars_spent: 100.0} }
+
+        expect(trade.trade_type).to eq('buy')
+        expect(user.coins).to eq(coins_hash)
+      end
+    end
+
+    context 'when purchasing more of a previous coin' do
+      it 'adds to that users coin hash' do
+        TradeService.create_trade(trade_params, user_with_btc)
+
+        trade = Trade.first
+        coins_hash = { btc: {amount: 110.0, dollars_spent: 200.0} }
+
+        expect(trade.trade_type).to eq('buy')
+        expect(user_with_btc.coins).to eq(coins_hash)
+      end
+    end
+  end
+
   describe '.create_buy_trade' do
     it 'creates a trade with type "buy"' do
       user = create(:user)
