@@ -1,4 +1,7 @@
 <%= form_for(@trade) do |f| %>
+	<div id='trade_type'>
+		<%= f.hidden_field :trade_type %>
+	</div>
 	<div id='symbol_trade'>
 		<%= f.text_field :symbol, placeholder: 'Symbol' %>
 	</div>

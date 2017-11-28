@@ -7,7 +7,7 @@ class TradesController < ApplicationController
 	end
 
 	def buy
-		@trade = Trade.new
+		@trade = Trade.new(trade_type: 'buy')
 	end
 
 	def sell
@@ -18,7 +18,7 @@ class TradesController < ApplicationController
 	end
 
 	def create
-		TradeService.create_buy_trade(trade_params, current_user)
+		TradeService.create_trade(trade_params, current_user)
 
 		redirect_to trades_path
 	end
@@ -26,6 +26,6 @@ class TradesController < ApplicationController
 	private
 
 	def trade_params
-		params.require(:trade).permit(:symbol, :total_coins, :dollars, :date)
+		params.require(:trade).permit(:symbol, :total_coins, :dollars, :date, :trade_type)
 	end
 end
