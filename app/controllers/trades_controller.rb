@@ -11,6 +11,8 @@ class TradesController < ApplicationController
 	end
 
 	def sell
+		@coin_info = current_user.coins.to_json
+		@trade = Trade.new(trade_type: 'sell')
 	end
 
 	def new

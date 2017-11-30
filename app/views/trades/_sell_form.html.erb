@@ -1,0 +1,26 @@
+<%= form_for(@trade) do |f| %>
+	<div id='trade_type'>
+		<%= f.hidden_field :trade_type %>
+	</div>
+	<div id='symbol_trade'>
+		<%= f.text_field :symbol, placeholder: 'Symbol' %>
+	</div>
+	</br>
+	<div id='total_coins_trade'>
+		<%= f.text_field :total_coins, placeholder: 'Total Coins' %>
+	</div>
+	</br>
+	<div id='dollars_trade'>
+		<%= f.text_field :dollars, placeholder: 'Proceeds' %>
+	</div>
+	</br>
+	<div id="date_trade">
+		<%= f.label(:date, 'Sale Date') %>
+		<br/>
+		<%= f.date_field(:date) %>
+	</div>
+	</br>
+	<div>
+		<%= f.submit 'Add', class: ['btn', 'btn-primary'] %>
+	</div>
+<% end %>
