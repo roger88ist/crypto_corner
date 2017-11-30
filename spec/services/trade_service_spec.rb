@@ -6,6 +6,7 @@ RSpec.describe TradeService do
     let(:user) { create(:user) }
     let(:user_with_btc) { create(:user, :with_btc)}
     let(:buy_params) { attributes_for(:trade, :buy) }
+    let(:sell_params) { attributes_for(:trade, :sell) }
 
     context 'when purchasing a new coin' do
       it 'downcases the symbol attribute' do
@@ -39,6 +40,18 @@ RSpec.describe TradeService do
         coins_hash = { btc: {amount: 110.0, dollars_spent: 200.0} }
 
         expect(trade.trade_type).to eq('buy')
+        expect(user_with_btc.coins).to eq(coins_hash)
+      end
+    end
+
+    context 'when selling a coin' do
+      it 'subtracts the amount and dollar_spent form the user correctly' do
+        TradeService.create_trade(sell_params, user_with_btc)
+
+        trade = Trade.first
+        coins_hash = { btc: {amount: 90.0, dollars_spent: 90.0} }
+
+        expect(trade.trade_type).to eq('sell')
         expect(user_with_btc.coins).to eq(coins_hash)
       end
     end
