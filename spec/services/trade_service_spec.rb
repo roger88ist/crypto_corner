@@ -5,13 +5,13 @@ RSpec.describe TradeService do
   describe '.create_trade' do
     let(:user) { create(:user) }
     let(:user_with_btc) { create(:user, :with_btc)}
-    let(:trade_params) { attributes_for(:trade, :buy) }
+    let(:buy_params) { attributes_for(:trade, :buy) }
 
     context 'when purchasing a new coin' do
       it 'downcases the symbol attribute' do
-        trade_params[:symbol] = trade_params[:symbol].upcase
+        buy_params[:symbol] = buy_params[:symbol].upcase
 
-        TradeService.create_trade(trade_params, user)
+        TradeService.create_trade(buy_params, user)
 
         trade = Trade.first
         coins_hash = { btc: {amount: 10.0, dollars_spent: 100.0} }
@@ -21,7 +21,7 @@ RSpec.describe TradeService do
       end
 
       it 'creates a trade with type "buy"' do
-        TradeService.create_trade(trade_params, user)
+        TradeService.create_trade(buy_params, user)
 
         trade = Trade.first
         coins_hash = { btc: {amount: 10.0, dollars_spent: 100.0} }
@@ -33,7 +33,7 @@ RSpec.describe TradeService do
 
     context 'when purchasing more of a previous coin' do
       it 'adds to that users coin hash' do
-        TradeService.create_trade(trade_params, user_with_btc)
+        TradeService.create_trade(buy_params, user_with_btc)
 
         trade = Trade.first
         coins_hash = { btc: {amount: 110.0, dollars_spent: 200.0} }
