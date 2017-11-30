@@ -8,6 +8,18 @@ RSpec.describe TradeService do
     let(:trade_params) { attributes_for(:trade, :buy) }
 
     context 'when purchasing a new coin' do
+      it 'downcases the symbol attribute' do
+        trade_params[:symbol] = trade_params[:symbol].upcase
+
+        TradeService.create_trade(trade_params, user)
+
+        trade = Trade.first
+        coins_hash = { btc: {amount: 10.0, dollars_spent: 100.0} }
+
+        expect(trade.symbol).to eq('btc')
+        expect(user.coins.keys).to eq([:btc])
+      end
+
       it 'creates a trade with type "buy"' do
         TradeService.create_trade(trade_params, user)
 

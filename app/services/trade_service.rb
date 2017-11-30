@@ -3,6 +3,7 @@ class TradeService
   def self.create_trade(attributes, current_user)
     attributes[:price] = attributes[:dollars].to_f / attributes[:total_coins].to_f
     attributes[:user_id] = current_user.id
+    attributes[:symbol].downcase!
     if Trade.create(attributes)
       update_user_coins(attributes, current_user)
     end
