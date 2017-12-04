@@ -3,7 +3,7 @@
 
 <%= form_for(@trade) do |f| %>
 	<div id='symbol_trade'>
-		<%= f.text_field :symbol, placeholder: 'Symbol' %>
+		<%= f.select :symbol, {}, {include_blank: true} %>
 	</div>
 	</br>
 	<div id='total_coins_trade'>

@@ -1,3 +1,7 @@
 $("#form").html("<%= escape_javascript render partial: 'sell_form' %>");
 
 $('#myModalLabel').text('New Sale');
+
+$.each(Object.keys($('#coin-hash').data('coins')), function() {
+    $('#trade_symbol').append($("<option />").val(this).text(this.toUpperCase()));
+});
