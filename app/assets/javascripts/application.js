@@ -14,3 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+function insertTitle(title) {
+	$('#myModalLabel').text(title);
+}
